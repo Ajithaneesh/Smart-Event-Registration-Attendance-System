@@ -1,0 +1,9 @@
+{
+  "name": "smart-event-root",
+  "private": true,
+  "scripts": {
+    "dev": "node start-dev.js",
+    "share": "npm --prefix frontend run share",
+    "build": "npm --prefix frontend install && npm --prefix frontend run build"
+  }
+}
