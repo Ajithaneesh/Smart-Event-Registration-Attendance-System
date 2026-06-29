@@ -115,3 +115,10 @@ npx vercel --prod
 ```
 *   Production Link: **[https://chargemate-sigma.vercel.app](https://chargemate-sigma.vercel.app)**
 *   Deployments History: **[Vercel Dashboard](https://vercel.com/balas-projects-f94ffc11/chargemate/deployments)**
+
+---
+
+## 📂 Project Resources & Deliverables
+
+Access additional project assets, reports, presentations, and demo videos here:
+🔗 **[Google Drive Folder](https://drive.google.com/drive/folders/1GY2fajOJHfSAUlheN2kpRHvhQUaF83Tu?usp=drive_link)**
