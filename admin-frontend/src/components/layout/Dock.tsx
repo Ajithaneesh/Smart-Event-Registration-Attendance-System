@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Home, Heart, User, School, MessageSquare, Settings, LogIn, Moon, Sun } from 'lucide-react';
+import { Home, School, MessageSquare, LogIn, Moon, Sun, Plus, BarChart3, Scan, ExternalLink } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import { useTheme } from '../../context/ThemeContext';
 import { cn } from '../../lib/utils';
@@ -70,31 +70,20 @@ function DockIcon({
 export default function Dock() {
   const location = useLocation();
   const navigate = useNavigate();
-  const { profile, isAdmin, isParticipant, showLogin, setShowLogin } = useAuth();
+  const { profile, showLogin, setShowLogin } = useAuth();
   const { theme, setTheme } = useTheme();
   const mouseX = useMotionValue(Infinity);
 
   const getNavItems = () => {
-    const baseItems = [
-      { id: 'home', label: 'Home', icon: Home, path: '/' },
-      { id: 'faculty', label: 'Faculty', icon: School, path: '/faculty' },
+    return [
+      { id: 'dashboard', label: 'Dashboard', icon: Home, path: '/' },
+      { id: 'create-event', label: 'Create Event', icon: Plus, path: '/create-event' },
+      { id: 'scanner', label: 'Scanner', icon: Scan, path: '/scanner' },
+      { id: 'analytics', label: 'Analytics', icon: BarChart3, path: '/analytics' },
+      { id: 'faculty', label: 'Faculty Directory', icon: School, path: '/faculty' },
+      { id: 'messages', label: 'Messages', icon: MessageSquare, path: '/messages' },
+      { id: 'student-portal', label: 'Student Portal', icon: ExternalLink, path: 'http://localhost:5173' }
     ];
-
-    if (profile) {
-      if (isParticipant) {
-        baseItems.push(
-          { id: 'favorites', label: 'Favorites', icon: Heart, path: '/favorites' },
-          { id: 'profile', label: 'Portfolio', icon: User, path: '/profile' },
-          { id: 'messages', label: 'Messages', icon: MessageSquare, path: '/messages' }
-        );
-      } else if (isAdmin) {
-        baseItems.push(
-          { id: 'admin', label: 'Admin Console', icon: Settings, path: 'http://localhost:5175' }
-        );
-      }
-    }
-    
-    return baseItems;
   };
 
   const navItems = getNavItems();

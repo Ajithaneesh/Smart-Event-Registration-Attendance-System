@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { useEvents } from '../../context/EventContext';
+import { isFavorite } from '../../utils/localStorage';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 
@@ -22,10 +23,10 @@ const categoryIcons = {
 
 export default function EventCard({ event, compact = false, index = 0 }) {
   const { profile } = useAuth();
-  const { toggleFavorite, favorites } = useEvents();
+  const { toggleFavorite } = useEvents();
   const [heartAnim, setHeartAnim] = useState(false);
 
-  const fav = profile && favorites.some(f => f.event_id === event.id);
+  const fav = profile && isFavorite(profile.id, event.id);
 
   const handleFavToggle = (e) => {
     e.preventDefault();

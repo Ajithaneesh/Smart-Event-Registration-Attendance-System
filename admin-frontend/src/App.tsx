@@ -14,13 +14,10 @@ import LoginModal from './components/auth/LoginModal';
 import { AnimatePresence, motion } from 'framer-motion';
 
 // Pages
-import Home from './pages/Home';
-import EventDetails from './pages/EventDetails';
-import Register from './pages/Register';
-import TicketPage from './pages/TicketPage';
-import Favorites from './pages/Favorites';
-import StudentPortfolio from './pages/StudentPortfolio';
-import FeedbackCertificate from './pages/FeedbackCertificate';
+import AdminDashboard from './pages/AdminDashboard';
+import Scanner from './pages/Scanner';
+import CreateEvent from './pages/CreateEvent';
+import AdminAnalytics from './pages/AdminAnalytics';
 import FacultyDirectory from './pages/FacultyDirectory';
 import MessagesPage from './pages/MessagesPage';
 
@@ -62,9 +59,9 @@ function AppLayout() {
           
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-primary/60 flex items-center justify-center shadow-sm">
-              <span className="text-white font-bold text-sm">S</span>
+              <span className="text-white font-bold text-sm">A</span>
             </div>
-            <span className="text-lg font-bold text-primary">SERAS</span>
+            <span className="text-lg font-bold text-primary">SERAS Admin</span>
           </div>
 
           <div className="w-10" /> {/* Spacer for centering */}
@@ -73,13 +70,10 @@ function AppLayout() {
         <main className="flex-1">
           <AnimatePresence mode="wait">
             <Routes location={location} key={location.pathname}>
-              <Route path="/" element={<AnimatedRoute><Home /></AnimatedRoute>} />
-              <Route path="/event/:id" element={<AnimatedRoute><EventDetails /></AnimatedRoute>} />
-              <Route path="/register/:eventId" element={<ProtectedRoute><AnimatedRoute><Register /></AnimatedRoute></ProtectedRoute>} />
-              <Route path="/ticket/:regId" element={<ProtectedRoute><AnimatedRoute><TicketPage /></AnimatedRoute></ProtectedRoute>} />
-              <Route path="/favorites" element={<ProtectedRoute><AnimatedRoute><Favorites /></AnimatedRoute></ProtectedRoute>} />
-              <Route path="/profile" element={<ProtectedRoute><AnimatedRoute><StudentPortfolio /></AnimatedRoute></ProtectedRoute>} />
-              <Route path="/feedback/:eventId" element={<ProtectedRoute><AnimatedRoute><FeedbackCertificate /></AnimatedRoute></ProtectedRoute>} />
+              <Route path="/" element={<ProtectedRoute adminOnly><AnimatedRoute><AdminDashboard /></AnimatedRoute></ProtectedRoute>} />
+              <Route path="/scanner" element={<ProtectedRoute adminOnly><AnimatedRoute><Scanner /></AnimatedRoute></ProtectedRoute>} />
+              <Route path="/create-event" element={<ProtectedRoute adminOnly><AnimatedRoute><CreateEvent /></AnimatedRoute></ProtectedRoute>} />
+              <Route path="/analytics" element={<ProtectedRoute adminOnly><AnimatedRoute><AdminAnalytics /></AnimatedRoute></ProtectedRoute>} />
               <Route path="/faculty" element={<AnimatedRoute><FacultyDirectory /></AnimatedRoute>} />
               <Route path="/messages" element={<ProtectedRoute><AnimatedRoute><MessagesPage /></AnimatedRoute></ProtectedRoute>} />
             </Routes>
